@@ -70,41 +70,41 @@ const GoogleDriveUploader: React.FC<GoogleDriveUploaderProps> = ({ apiKey, clien
   
     if (!file) {
       console.log('No file selected. Exiting.');
-      return;  // Ensure you have a file selected
+      return;
     }
   
     if (!accessToken) {
       console.log('No access token available. Exiting.');
-      return;  // Ensure you have an access token available
+      return;
     }
   
     const metadata = {
-      name: file.name,  // Name of the file to be uploaded
-      mimeType: file.type,  // MIME type of the file
+      name: file.name,
+      mimeType: file.type,
     };
     console.log('File metadata:', metadata);
   
     const form = new FormData();
     form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
-    form.append('file', file);  // Append the actual file
+    form.append('file', file);
     console.log('Form data prepared for upload:', form);
+
+    const encodedAccessToken = encodeURIComponent('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'); 
   
-    // Use the accessToken dynamically in the Authorization header
     fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
       method: 'POST',
       headers: new Headers({
-        Authorization: `${accessToken}`,  // Use the dynamic accessToken here
-        
-    }),
-    body: form,  // The body of the request contains the file and metadata
-})
-.then((response) => response.json())
-.then((data) => {
-    console.log('File uploaded successfully:', data);
-})
-.catch((error) => {
-    console.error('Error uploading file:', error);
-});
+        Authorization: `Bearer ${encodedAccessToken}`, // Correct format with 'Bearer' prefix
+      }),
+      body: form,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('File uploaded successfully:', data);
+      })
+      .catch((error) => {
+        console.error('Error uploading file:', error);
+      });
   };
   
 

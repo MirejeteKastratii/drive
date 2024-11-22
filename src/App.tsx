@@ -8,7 +8,6 @@ const App: React.FC = () => {
   return (
     <GoogleOAuthProvider clientId={clientId}>
       <div>
-        <h1>Upload File to Google Drive</h1>
         <GoogleDriveUploader
           apiKey="AIzaSyBrw6IKkrmBG6BvzHZWFpLkiCef7DdQalg"    
           clientId={clientId}         
