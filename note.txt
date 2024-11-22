@@ -1,0 +1,40 @@
+id 1020610614752-cpdka5sk89qrm7otltd3bombjja3nrc6.apps.googleusercontent.com
+secret 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
+https://www.youtube.com/watch?v=1y0-IfRW114
+
+
+
+
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+
+import {google} from 'googleapis'
+
+const CLIENT_ID = '1020610614752-cpdka5sk89qrm7otltd3bombjja3nrc6.apps.googleusercontent.com' ;
+const CLIENT_SECRET = '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';
+const REDIRECT_URI = 'https://developers.google.com/oauthplayground' ;
+const REFRESH_TOKEN= '1//044_PtRBRDUZECgYIARAAGAQSNwF-L9IrGjXA38UNi-UDSA8-plZFsoIArY2QNwTU8dqfE_8_8Mqk1stScqoXqQWc_XkDQjh1paE';
+
+const oauthClient = new google.auth.OAuth2(
+  CLIENT_ID,
+  CLIENT_SECRET, 
+  REDIRECT_URI
+)
+
+oauthClient.setCredentials({refresh_token:REFRESH_TOKEN})
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+     
+    </>
+  )
+}
+
+export default App
+-------------------------
+https://medium.com/@sagarsangwan/step-by-step-guide-for-google-drive-integration-in-next-js-80930aa7b5b8
